@@ -105,7 +105,7 @@ public class TestCoinController {
 	}
 
 	//　刪除
-	@DeleteMapping("/detestCoin/{id}")
+	@PostMapping("/detestCoin/{id}")
 	public ResponseEntity<HttpStatus> deleteTestCoin(@PathVariable("id") long id) {
 		try {
 			testCoinRepository.deleteById(id);
@@ -116,7 +116,7 @@ public class TestCoinController {
 	}
 
 	// 刪除所有
-	@DeleteMapping("/testCoin")
+	@PostMapping("/testCoin")
 	public ResponseEntity<HttpStatus> deleteAllTestCoins() {
 		try {
 			testCoinRepository.deleteAll();
@@ -134,7 +134,7 @@ public class TestCoinController {
 		String s = getJSON("https://api.coindesk.com/v1/bpi/currentprice.json",8000);
 	     try {
 	    	 JSONObject jsonObject = JSONObject.fromObject(s);
-	    	 data.put("data",jsonObject);
+	    	 data.put("data",s);
 	   } catch (JSONException e) {
 			 // TODO Auto-generated catch block
 		    e.printStackTrace();
